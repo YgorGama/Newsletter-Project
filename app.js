@@ -7,12 +7,12 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
-const res = require('express/lib/response');
-const { rawListeners } = require('process');
 
 //Comando para configurar o link na nova documentação da API MailChimp
 mailchimp.setConfig({
+  //Para aplicação funcionar é necessario a sua KEY da mailchimp
   apiKey: "62a61cdb2e59bde7573437e25caae596-us14",
+  //Também é necessário incluir as informações da KEY que estão apos o traço 
   server: "us14"
 });
 
@@ -37,6 +37,7 @@ app.post('/', (req,res)=>{
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
 
+    //Aqui você deve colocar seu listId para aplicação funcionar
     const listId = "1732d21810";
 
     const subscribingUser = {
